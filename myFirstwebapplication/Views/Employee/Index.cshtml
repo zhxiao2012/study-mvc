@@ -1,0 +1,26 @@
+﻿@{ Layout = "~/Views/Shared/_Layout.cshtml";}
+@using myFirstwebapplication.ViewModel
+@model EmployeeListViewModel
+
+@section ContentBody{
+    @{    Html.RenderAction("GetAddNewLink");} 
+<div style="text-align:right">
+    Hello @Model.UserName <a href="/Authentication/Logout">Logout</a>
+</div>
+    <div>
+        <table border="1">
+            <tr>
+                <th>Employee Name</th>
+                <th>Salary</th>
+            </tr>
+            @foreach (EmployeeViewModel item in Model.Employees)
+            {
+                <tr>
+                    <td>@item.EmployeeName</td>
+                    <td style="background-color:@item.SalaryColor">@item.Salary</td>
+                </tr>
+            }
+
+        </table>
+    </div>
+}
